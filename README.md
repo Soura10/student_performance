@@ -15,11 +15,11 @@ git clone https://github.com/Soura10/student_performance.git
 ### Step 2- Create a conda environment after opening the repository
 
 ```bash
-conda create -n sensor python=8 -y
+conda create -n venv python=8 -y
 ```
 
 ```bash
-conda activate sensor
+conda activate venv
 ```
 
 ### Step 3 - Install the requirements
@@ -34,7 +34,7 @@ python app.py
 
 ### Step 5. Train application
 ```bash
-http://localhost:8080/train
+http://localhost:8080/
 
 ```
 

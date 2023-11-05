@@ -48,7 +48,7 @@ class ModelTrainer:
                       #"K-Neighbors Regressor" : KNeighborsRegressor(),
                       #"XGB Regressor" : XGBRegressor(),
                       "CatBoosting Regressor" : CatBoostRegressor(verbose=False),
-                      "AdaBoost Regressor": AdaBoostRegressor()
+                      "AdaBoost Regressor": AdaBoostRegressor(),
                       
                  }
                  params={

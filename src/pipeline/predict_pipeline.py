@@ -10,11 +10,27 @@ class PredictPipeline:
     
     def predict(self,features):
 
-        model_path='artifacts\model.pkl'
+        try:
+            model_path='artifacts\model.pkl'
 
-        preprocessor_path='artifacts\preprocessor.pkl'
+            preprocessor_path='artifacts\preprocessor.pkl'
 
-        model=load_object(file_path=model_path)
+            model=load_object(file_path=model_path)
+
+            preprocessor=load_object(file_path=preprocessor_path)
+
+            #data_scaled=preprocessor.transform(features)
+            data_scaled=preprocessor.transform(features)
+
+            preds=model.predict(data_scaled)
+
+            return preds
+    
+        #except Exception as e:
+        #    raise(e,sys)
+        except Exception as e:
+            raise CustomException(e,sys)
+
 
 
 
@@ -39,7 +55,7 @@ class CustomData:
         self.reading_score=reading_score
         self.writing_score=writing_score
 
-    def get_data_as_frame(self):
+    def get_data_as_data_frame(self):
         '''it will return all our inputs in form of a dataframe
            as we train our model as dataframe.
         '''
@@ -51,9 +67,8 @@ class CustomData:
             "lunch" : [self.lunch],
             "test_preparation_course" : [self.test_preparation_course],
             "reading_score" : [self.reading_score],
-            "writing_score" : [self.writing_score]
-
-        }
+            "writing_score" : [self.writing_score],
+            }
 
             return pd.DataFrame(custom_data_input_dict)
         except Exception as e:  
